@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <usb-device vendor-id="1282" /><!--Acer 0502-->
+	<usb-device vendor-id="2821" /><!--ASUS 0b05-->
+	<usb-device vendor-id="1151" /><!--Headset-Test 047f-->
+	<usb-device vendor-id="16700" /><!--Dell 413c-->
+	<usb-device vendor-id="1161" /><!--Foxconn 0489-->
+	<usb-device vendor-id="1221" /><!--Fujitsu 04c5-->
+	<usb-device vendor-id="2334" /><!--Garmin-Asus 091e-->
+	<usb-device vendor-id="6353" /><!--Google 18d1-->
+	<usb-device vendor-id="4251" /><!--Hisense 109b-->
+	<usb-device vendor-id="2996" /><!--HTC 0bb4-->
+	<usb-device vendor-id="4817" /><!--Huawei 12d1-->
+	<usb-device vendor-id="9443" /><!--K-Touch 24e3-->
+	<usb-device vendor-id="8470" /><!--KT Tech 2116-->
+	<usb-device vendor-id="1154" /><!--Kyocera 0482-->
+	<usb-device vendor-id="6127" /><!--Lenovo 17ef-->
+	<usb-device vendor-id="4100" /><!--LG 1004-->
+	<usb-device vendor-id="8888" /><!--Motorola 22b8-->
+	<usb-device vendor-id="1033" /><!--NEC 0409-->
+	<usb-device vendor-id="8320" /><!--Nook 2080-->
+	<usb-device vendor-id="2389" /><!--Nvidia 0955-->
+	<usb-device vendor-id="8791" /><!--OTGV 2257-->
+	<usb-device vendor-id="4265" /><!--Pantech 10a9-->
+	<usb-device vendor-id="7501" /><!--Pegatron 1d4d-->
+	<usb-device vendor-id="1137" /><!--Philips 0471-->
+	<usb-device vendor-id="1242" /><!--PMC-Sierra 04da-->
+	<usb-device vendor-id="1478" /><!--Qualcomm 05c6-->
+	<usb-device vendor-id="8019" /><!--SK Telesys 1f53-->
+	<usb-device vendor-id="1256" /><!--Samsung 04e8-->
+	<usb-device vendor-id="1245" /><!--Sharp 04dd-->
+	<usb-device vendor-id="1356" /><!--Sony 054c-->
+	<usb-device vendor-id="4046" /><!--Sony Ericsson 0fce-->
+	<usb-device vendor-id="9024" /><!--Teleepoch 2340-->
+	<usb-device vendor-id="2352" /><!--Toshiba 0930-->
+	<usb-device vendor-id="6610" /><!--ZTE 19d2-->
+	
+	
+</resources>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical|center_horizontal"
+        
+        
+        android:text="@string/hello" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/red"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/btn_black"
+                android:text="Start ADB" />
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button1"
+                android:background="@drawable/btn_black"
+                android:text="Check Devices" />
+
+            
+
+            <Button
+                android:id="@+id/button8"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button2"
+                android:background="@drawable/btn_black"
+                android:text="ADB root" />
+            
+            <Button
+                android:id="@+id/button3"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button8"
+                android:background="@drawable/btn_black"
+                android:text="Enter" android:visibility="gone"/>
+            
+            <Button
+                android:id="@+id/button10"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button3"
+                android:background="@drawable/btn_black"
+                android:text="Clear Output" />
+            
+            <Button
+                android:id="@+id/btnListPackages"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button10"
+                android:background="@drawable/btn_black"
+                android:text="List packages" />
+            
+            <Button
+                android:id="@+id/btnUnlockTarget"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btnListPackages"
+                android:background="@drawable/btn_black"
+                android:text="Unlock target" />
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            
+            <Button
+                android:id="@+id/button9"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/btn_black"
+                android:text="Auto-raid" />
+
+            
+            <Button
+                android:id="@+id/button4"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button9"
+                android:background="@drawable/btn_black"
+                android:text="Grab data" />
+           
+            <Button
+                android:id="@+id/button5"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button4"
+                android:background="@drawable/btn_black"
+                android:text="Grab data (root)" />
+            
+            <Button
+                android:id="@+id/button6"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button5"
+                android:background="@drawable/btn_black"
+                android:text="Grab googledata (root only)" />
+            
+            
+
+            
+
+            <Button
+                android:id="@+id/button7"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button6"
+                android:background="@drawable/btn_black"
+                android:text="Grab pics" />
+
+            
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+        android:focusable="false"
+        android:visibility="invisible"/>
+
+
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.50"
+        android:ems="10"
+        android:inputType="textMultiLine" 
+        android:focusable="false">
+
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>
+</ScrollView>
