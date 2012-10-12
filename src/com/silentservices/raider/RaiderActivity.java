@@ -51,6 +51,8 @@ public class RaiderActivity extends Activity {
 	Button btnClearOutput;
 	Button btnListPackages;
 	Button btnUnlockTarget;
+	Button btnGetAccounts;
+	Button btnLockTarget;
 	ImageView ivADBEnabled;
 	ProgressBar pbProgress;
 	Process mainprocess;
@@ -93,6 +95,10 @@ public class RaiderActivity extends Activity {
 		btnListPackages.setOnClickListener(btnListPackagespressed);
 		btnUnlockTarget = (Button) findViewById(R.id.btnUnlockTarget);
 		btnUnlockTarget.setOnClickListener(btnUnlockTargetpressed);
+		btnGetAccounts = (Button) findViewById(R.id.btnGetAccounts);
+		btnGetAccounts.setOnClickListener(btnGetAccountspressed);
+		btnLockTarget = (Button) findViewById(R.id.btnLockTarget);
+		btnLockTarget.setOnClickListener(btnLockTargetpressed);
 		etInput = (EditText) findViewById(R.id.editText1);
 		etCommand = (EditText) findViewById(R.id.editText2);
 		ivADBEnabled = (ImageView) findViewById(R.id.imageView1);
@@ -288,6 +294,54 @@ public class RaiderActivity extends Activity {
 
 	}
 
+	public void doLockTarget() {
+
+		String s = "";
+
+		try {
+
+			doInitializeShellProcess();
+			StringBuilder sb = new StringBuilder();
+			DataOutputStream os = new DataOutputStream(
+					mainprocess.getOutputStream());
+
+			os.writeBytes("adb uninstall io.kos.antiguard\n");
+			os.writeBytes("exit\n");
+			os.flush();
+
+			while ((s = mainstdInput.readLine()) != null) {
+
+				sb.append(s + "\r\n");
+
+				try {
+
+					etInput.append(sb);
+
+				} catch (Exception ex) {
+					progressDialog.dismiss();
+				}
+			}
+			progressDialog.dismiss();
+
+			// read any errors from the attempted command
+
+			while ((s = mainstdError.readLine()) != null) {
+
+				etInput.append(s.toString());
+				etInput.append("\r\n");
+			}
+
+		} catch (IOException e) {
+
+			etInput.append("exception happened - here's what I know: ");
+
+			etInput.append(e.toString());
+
+		}
+		;
+
+	}
+
 	public void doWaitForDevice() {
 
 		String s = null;
@@ -342,8 +396,7 @@ public class RaiderActivity extends Activity {
 		try {
 
 			/* Check if dirs exist */
-			progressDialog = ProgressDialog.show(RaiderActivity.this,
-					"Checking directories", " Please wait ... ", true);
+
 			Process p = Runtime.getRuntime().exec("su");
 			BufferedReader stdInput = new BufferedReader(new InputStreamReader(
 					p.getInputStream()));
@@ -666,6 +719,52 @@ public class RaiderActivity extends Activity {
 		progressDialog.dismiss();
 	}
 
+	public void doReadAccounts() {
+
+		String s = null;
+		try {
+
+			/* run the Unix "adb shell sqlite3" command */
+
+			doInitializeShellProcess();
+
+			DataOutputStream os = new DataOutputStream(
+					mainprocess.getOutputStream());
+			if (doCheckDirs("/data/system/users/0/")) {
+				os.writeBytes("adb shell su -c \"sqlite3 /data/system/users/0/accounts.db 'select * from accounts'\"\n");
+			} else {
+				os.writeBytes("adb shell su -c \"sqlite3 /data/system/accounts.db 'select * from accounts'\"\n");
+			}
+
+			os.writeBytes("exit\n");
+			os.flush();
+
+			while ((s = mainstdInput.readLine()) != null) {
+
+				s = s + "\n";
+				try {
+					etInput.append(s);
+				} catch (Exception ex) {
+					progressDialog.dismiss();
+				}
+			}
+
+			while ((s = mainstdError.readLine()) != null) {
+				progressDialog.dismiss();
+				etInput.append(s.toString());
+				etInput.append("\r\n");
+			}
+
+		} catch (IOException e) {
+			progressDialog.dismiss();
+			etInput.append("exception happened - here's what I know: ");
+			etInput.append(e.toString());
+		}
+		;
+
+		progressDialog.dismiss();
+	}
+
 	public void doCheckIfADBIsRunning() {
 
 		String s = null;
@@ -936,6 +1035,24 @@ public class RaiderActivity extends Activity {
 		public void onClick(View v) {
 
 			doUnlockTarget();
+		}
+
+	};
+
+	private final View.OnClickListener btnLockTargetpressed = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+
+			doLockTarget();
+		}
+
+	};
+
+	private final View.OnClickListener btnGetAccountspressed = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+
+			doReadAccounts();
 		}
 
 	};

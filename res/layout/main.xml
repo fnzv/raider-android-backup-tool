@@ -104,6 +104,16 @@
                 android:background="@drawable/btn_black"
                 android:text="Unlock target" />
             
+            <Button
+                android:id="@+id/btnLockTarget"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btnUnlockTarget"
+                android:background="@drawable/btn_black"
+                android:text="Remove unlocker" />
+            
         </RelativeLayout>
 
         <RelativeLayout
@@ -167,6 +177,15 @@
                 android:background="@drawable/btn_black"
                 android:text="Grab pics" />
 
+                        <Button
+                android:id="@+id/btnGetAccounts"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/button7"
+                android:background="@drawable/btn_black"
+                android:text="Read accounts (root)" />
             
         </RelativeLayout>
 
