@@ -2,26 +2,30 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" android:layout_height="fill_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
+     <TextView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center_vertical|center_horizontal"
-        
-        
         android:text="@string/hello" />
-
+
+    <TextView
+        android:id="@+id/tvTarget"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Current Target: none" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/red"
         android:visibility="gone" />
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
@@ -114,6 +118,19 @@
                 android:background="@drawable/btn_black"
                 android:text="Remove unlocker" />
             
+             <Button
+                 android:id="@+id/btnRootTarget"
+                 style="@style/ButtonText"
+                 android:layout_width="180dp"
+                 android:layout_height="40dp"
+                 android:layout_below="@id/btnLockTarget"
+                 android:layout_centerHorizontal="true"
+                 android:background="@drawable/btn_black"
+                 android:text="Root target (root)"
+                 android:visibility="gone" />
+
+             
+             
         </RelativeLayout>
 
         <RelativeLayout
@@ -177,7 +194,7 @@
                 android:background="@drawable/btn_black"
                 android:text="Grab pics" />
 
-                        <Button
+            <Button
                 android:id="@+id/btnGetAccounts"
                 style="@style/ButtonText"
                 android:layout_width="180dp"
@@ -187,6 +204,59 @@
                 android:background="@drawable/btn_black"
                 android:text="Read accounts (root)" />
             
+            <Button
+                android:id="@+id/btnGetSms"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btnGetAccounts"
+                android:background="@drawable/btn_black"
+                android:text="Read SMS (root)" />
+            
+            <Button
+                android:id="@+id/btnGetCalendar"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btnGetSms"
+                android:background="@drawable/btn_black"
+                android:text="Read Calendar (root)" />
+            
+            <Button
+                android:id="@+id/btnGetContacts"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btnGetCalendar"
+                android:background="@drawable/btn_black"
+                android:text="Read Contacts (root)" />
+           
+            
+            <Button
+                android:id="@+id/btnGetMapsData"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btnGetContacts"
+                android:background="@drawable/btn_black"
+                android:text="Read Maps Data (root)" />
+            
+            
+            <Button
+                android:id="@+id/btnGetWifi"
+                style="@style/ButtonText"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/btnGetMapsData"
+                android:background="@drawable/btn_black"
+                android:text="Read WiFi (root)" />
+                        
+                        
         </RelativeLayout>
 
 
@@ -199,16 +269,14 @@
         android:ems="10" 
         android:focusable="false"
         android:visibility="invisible"/>
-
-
-
-    <EditText
+    
+<EditText
         android:id="@+id/editText1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="0.50"
         android:ems="10"
-        android:inputType="textMultiLine" 
+        android:inputType="textMultiLine"
         android:focusable="false">
 
         <requestFocus />
